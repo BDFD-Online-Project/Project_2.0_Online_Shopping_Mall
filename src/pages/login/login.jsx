@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './login.less';
 import logo from './images/logo.jpg';
 import { Form, Input, Button } from 'antd';
-
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 export default class Login extends Component {
   render() {
     return (
@@ -14,12 +14,19 @@ export default class Login extends Component {
         </header>
         <section className='login-content'>
           <h2>用户登入</h2>
-          <Form>
-            <Form.Item>
-              <Input type='username' placeholder='Username' />
+          <Form name='normal_login' className='login-form'>
+            <Form.Item name='username'>
+              <Input
+                prefix={<UserOutlined className='site-form-item-icon' />}
+                placeholder='Username'
+              />
             </Form.Item>
-            <Form.Item>
-              <Input type='password' placeholder='Password' />
+            <Form.Item name='password'>
+              <Input
+                prefix={<LockOutlined className='site-form-item-icon' />}
+                type='password'
+                placeholder='Password'
+              />
             </Form.Item>
 
             <Form.Item>
@@ -30,6 +37,7 @@ export default class Login extends Component {
               >
                 Log in
               </Button>
+              {/* Or <a href=''>register now!</a> */}
             </Form.Item>
           </Form>
         </section>
