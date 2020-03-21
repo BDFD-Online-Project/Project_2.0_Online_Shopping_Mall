@@ -4,7 +4,7 @@ import './login.less';
 import logo from './images/logo.jpg';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-export default class Login extends Component {
+class Login extends Component {
   render() {
     return (
       <div className='login'>
@@ -14,7 +14,11 @@ export default class Login extends Component {
         </header>
         <section className='login-content'>
           <h2>用户登入</h2>
-          <Form name='normal_login' className='login-form'>
+          <Form
+            onSubmit={this.handleSubmit}
+            name='normal_login'
+            className='login-form'
+          >
             <Form.Item name='username'>
               <Input
                 prefix={<UserOutlined className='site-form-item-icon' />}
@@ -28,7 +32,6 @@ export default class Login extends Component {
                 placeholder='Password'
               />
             </Form.Item>
-
             <Form.Item>
               <Button
                 type='primary'
@@ -45,3 +48,7 @@ export default class Login extends Component {
     );
   }
 }
+
+// //高阶函数，高阶组件 （包装Form组件生成一个新的组件）
+// const WrapLogin = Form.create()(Login);
+export default Login;
